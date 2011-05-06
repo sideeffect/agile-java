@@ -1,13 +1,13 @@
 package kr.sideeffect.agilejava.ch01;
 
 public class Student {
-	private String myName;
+	private String name;
 
 	public Student(String name) {
-		myName = name;
+		this.name = name;
 	}
 
 	public String getName() {
-		return myName;
+		return this.name;
 	}
 }
