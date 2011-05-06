@@ -5,6 +5,7 @@ import org.junit.Test;
 public class StudentTest {
 	@Test
 	public void testCreate() {
-		new Student("Jane Doe");
+		Student student = new Student("Jane Doe");
+		String StudentName = student.getName();
 	}
 }
