@@ -16,5 +16,9 @@ public class CourseSession {
 	public String getNumber() {
 		return number;
 	}
+
+	public int getNumberOfStudents() {
+		return 0;
+	}
 	
 }
