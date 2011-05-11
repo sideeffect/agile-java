@@ -5,11 +5,12 @@ import kr.sideeffect.agilejava.ch01.Student;
 public class CourseSession {
 	private String department;
 	private String number;
-	private int numberOfStudents = 0;
+	private int numberOfStudents;
 	
 	public CourseSession(String department, String number) {
 		this.department = department;
 		this.number = number;
+		numberOfStudents = 0;
 	}
 
 	public String getDepartment() {
