@@ -1,8 +1,11 @@
 package kr.sideeffect.agilejava.ch02;
 
+import kr.sideeffect.agilejava.ch01.Student;
+
 public class CourseSession {
 	private String department;
 	private String number;
+	private int numberOfStudents = 0;
 	
 	public CourseSession(String department, String number) {
 		this.department = department;
@@ -18,7 +21,11 @@ public class CourseSession {
 	}
 
 	public int getNumberOfStudents() {
-		return 0;
+		return numberOfStudents;
+	}
+
+	public void enroll(Student student) {
+		numberOfStudents = numberOfStudents + 1;
 	}
 	
 }
