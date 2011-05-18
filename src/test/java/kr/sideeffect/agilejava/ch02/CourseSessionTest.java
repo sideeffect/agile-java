@@ -2,7 +2,7 @@ package kr.sideeffect.agilejava.ch02;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
+import java.util.Date;
 
 import kr.sideeffect.agilejava.ch01.Student;
 
@@ -36,5 +36,21 @@ public class CourseSessionTest {
 		assertEquals(2, session.getNumberOfStudents());
 		assertEquals(student1, session.get(0));
 		assertEquals(student2, session.get(1));
+	}
+	
+	@Test
+	public void testCourseDates() {
+		int year = 103;
+		int month = 0;
+		int date = 6;
+		Date startDate = new Date(year, month, date);
+		
+		CourseSession sesseion = new CourseSession("ABCD", "200", startDate);
+		
+		year = 103;
+		month = 3;
+		date = 25;
+		Date sixteenWeeksOut = new Date(year, month, date);
+		assertEquals(sixteenWeeksOut, sesseion.getEndDate());
 	}
 }
