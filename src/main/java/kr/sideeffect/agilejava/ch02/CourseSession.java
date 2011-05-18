@@ -30,8 +30,8 @@ public class CourseSession {
 		students.add(student);
 	}
 
-	public ArrayList<Student> getAllStudents() {
-		return students;
+	public Student get(int index) {
+		return students.get(index);
 	}
 	
 }
