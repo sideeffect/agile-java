@@ -52,5 +52,9 @@ public class CourseSession {
 		Date endDate = calendar.getTime();
 		return endDate;
 	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
 	
 }

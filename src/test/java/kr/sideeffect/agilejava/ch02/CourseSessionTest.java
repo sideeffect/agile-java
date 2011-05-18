@@ -11,10 +11,15 @@ import org.junit.Test;
 
 public class CourseSessionTest {
 	private CourseSession session;
+	private Date startDate;
 	
 	@Before
 	public void setUp() {
-		session = new CourseSession("ENGL", "101");
+		int year = 103;
+		int month = 0;
+		int date = 6;
+		startDate = new Date(year, month, date);
+		session = new CourseSession("ENGL", "101", startDate);
 	}
 	
 	@Test
@@ -22,6 +27,7 @@ public class CourseSessionTest {
 		assertEquals("ENGL", session.getDepartment());
 		assertEquals("101", session.getNumber());
 		assertEquals(0, session.getNumberOfStudents());
+		assertEquals(startDate, session.getStartDate());
 	}
 	
 	@Test
@@ -41,16 +47,9 @@ public class CourseSessionTest {
 	@Test
 	public void testCourseDates() {
 		int year = 103;
-		int month = 0;
-		int date = 6;
-		Date startDate = new Date(year, month, date);
-		
-		CourseSession sesseion = new CourseSession("ABCD", "200", startDate);
-		
-		year = 103;
-		month = 3;
-		date = 25;
+		int month = 3;
+		int date = 25;
 		Date sixteenWeeksOut = new Date(year, month, date);
-		assertEquals(sixteenWeeksOut, sesseion.getEndDate());
+		assertEquals(sixteenWeeksOut, session.getEndDate());
 	}
 }
