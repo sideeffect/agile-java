@@ -13,12 +13,13 @@ public class CourseSessionTest {
 	private CourseSession session;
 	private Date startDate;
 	
+	private Date createDate(int year, int month, int date) {
+		return new Date(year - 1900, month - 1, date);
+	}
+	
 	@Before
 	public void setUp() {
-		int year = 103;
-		int month = 0;
-		int date = 6;
-		startDate = new Date(year, month, date);
+		startDate = createDate(2003, 1, 6);
 		session = new CourseSession("ENGL", "101", startDate);
 	}
 	
@@ -46,10 +47,7 @@ public class CourseSessionTest {
 	
 	@Test
 	public void testCourseDates() {
-		int year = 103;
-		int month = 3;
-		int date = 25;
-		Date sixteenWeeksOut = new Date(year, month, date);
+		Date sixteenWeeksOut = createDate(2003, 4, 25);
 		assertEquals(sixteenWeeksOut, session.getEndDate());
 	}
 }
