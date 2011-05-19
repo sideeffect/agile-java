@@ -2,11 +2,10 @@ package kr.sideeffect.agilejava.ch02;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import kr.sideeffect.agilejava.ch01.Student;
+import kr.sideeffect.agilejava.ch03.DateUtil;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,18 +14,9 @@ public class CourseSessionTest {
 	private CourseSession session;
 	private Date startDate;
 	
-	private Date createDate(int year, int month, int date) {
-		GregorianCalendar calendar = new GregorianCalendar();
-		calendar.clear();
-		calendar.set(Calendar.YEAR, year);
-		calendar.set(Calendar.MONTH, month -1);
-		calendar.set(Calendar.DAY_OF_MONTH, date);
-		return calendar.getTime();
-	}
-	
 	@Before
 	public void setUp() {
-		startDate = createDate(2003, 1, 6);
+		startDate = new DateUtil().createDate(2003, 1, 6);
 		session = new CourseSession("ENGL", "101", startDate);
 	}
 	
@@ -54,7 +44,7 @@ public class CourseSessionTest {
 	
 	@Test
 	public void testCourseDates() {
-		Date sixteenWeeksOut = createDate(2003, 4, 25);
+		Date sixteenWeeksOut = new DateUtil().createDate(2003, 4, 25);
 		assertEquals(sixteenWeeksOut, session.getEndDate());
 	}
 	
