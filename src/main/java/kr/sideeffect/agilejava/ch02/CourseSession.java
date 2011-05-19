@@ -73,5 +73,9 @@ public class CourseSession {
 		
 		return buffer.toString();
 	}
+
+	public ArrayList<Student> getAllStudents() {
+		return students;
+	}
 	
 }
