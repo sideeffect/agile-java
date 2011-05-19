@@ -8,8 +8,9 @@ import java.util.GregorianCalendar;
 import kr.sideeffect.agilejava.ch01.Student;
 
 public class CourseSession {
-	static final String ROSTER_REPORT_HEADER = "---HEADER---";
-	static final String ROSTER_REPORT_FOOTER = "---FOOTER--";
+	static final String NEWLINE = System.getProperty("line.separator");
+	static final String ROSTER_REPORT_HEADER = "Student" + NEWLINE + "-" + NEWLINE;
+	static final String ROSTER_REPORT_FOOTER = NEWLINE + "# students = ";
 	private String department;
 	private String number;
 	private ArrayList<Student> students = new ArrayList<Student>();
