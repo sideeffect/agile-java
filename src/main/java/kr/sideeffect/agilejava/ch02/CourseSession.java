@@ -8,6 +8,8 @@ import java.util.GregorianCalendar;
 import kr.sideeffect.agilejava.ch01.Student;
 
 public class CourseSession {
+	static final String ROSTER_REPORT_HEADER = "---HEADER---";
+	static final String ROSTER_REPORT_FOOTER = "---FOOTER--";
 	private String department;
 	private String number;
 	private ArrayList<Student> students = new ArrayList<Student>();
@@ -54,6 +56,24 @@ public class CourseSession {
 
 	public Date getStartDate() {
 		return startDate;
+	}
+
+	public String getRosterReport() {
+		StringBuilder buffer = new StringBuilder();
+		
+		buffer.append(ROSTER_REPORT_HEADER);
+		
+		Student student = students.get(0);
+		buffer.append(student.getName());
+		buffer.append('\n');
+		
+		student = students.get(1);
+		buffer.append(student.getName());
+		buffer.append('\n');
+		
+		buffer.append(ROSTER_REPORT_FOOTER + students.size() + '\n');
+		
+		return buffer.toString();
 	}
 	
 }
