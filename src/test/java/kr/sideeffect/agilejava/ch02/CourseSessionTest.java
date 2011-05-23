@@ -16,7 +16,7 @@ public class CourseSessionTest {
 	
 	@Before
 	public void setUp() {
-		startDate = new DateUtil().createDate(2003, 1, 6);
+		startDate = DateUtil.createDate(2003, 1, 6);
 		session = new CourseSession("ENGL", "101", startDate);
 	}
 	
@@ -44,7 +44,7 @@ public class CourseSessionTest {
 	
 	@Test
 	public void testCourseDates() {
-		Date sixteenWeeksOut = new DateUtil().createDate(2003, 4, 25);
+		Date sixteenWeeksOut = DateUtil.createDate(2003, 4, 25);
 		assertEquals(sixteenWeeksOut, session.getEndDate());
 	}
 	
