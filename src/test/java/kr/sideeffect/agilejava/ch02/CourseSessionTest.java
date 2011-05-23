@@ -56,4 +56,17 @@ public class CourseSessionTest {
 		String rosterReport = session.getRosterReport();
 		assertEquals(CourseSession.ROSTER_REPORT_HEADER + "A" + CourseSession.NEWLINE + "B" + CourseSession.NEWLINE + CourseSession.ROSTER_REPORT_FOOTER + "2" + CourseSession.NEWLINE, rosterReport);
 	}
+	
+	@Test
+	public void testCount() {
+		CourseSession.count = 0;
+		createCourseSession();
+		assertEquals(1, CourseSession.count);
+		createCourseSession();
+		assertEquals(2, CourseSession.count);		
+	}
+
+	private CourseSession createCourseSession() {
+		return new CourseSession("ENGL", "101", startDate);
+	}
 }
