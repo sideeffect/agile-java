@@ -16,6 +16,7 @@ public class CourseSession {
 	private String number;
 	private ArrayList<Student> students = new ArrayList<Student>();
 	private Date startDate;
+	private int numberOfCredits;
 	
 	private CourseSession(String department, String number, Date startDate) {
 		this.department = department;
@@ -53,6 +54,7 @@ public class CourseSession {
 	}
 
 	public void enroll(Student student) {
+		student.addCredits(numberOfCredits);
 		students.add(student);
 	}
 
@@ -89,6 +91,10 @@ public class CourseSession {
 
 	public ArrayList<Student> getAllStudents() {
 		return students;
+	}
+
+	public void setNumberOfCredits(int numberOfCredits) {
+		this.numberOfCredits = numberOfCredits;
 	}
 
 }
