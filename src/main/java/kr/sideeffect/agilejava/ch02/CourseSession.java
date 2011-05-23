@@ -11,7 +11,7 @@ public class CourseSession {
 	static final String NEWLINE = System.getProperty("line.separator");
 	static final String ROSTER_REPORT_HEADER = "Student" + NEWLINE + "-" + NEWLINE;
 	static final String ROSTER_REPORT_FOOTER = NEWLINE + "# students = ";
-	public static int count;
+	private static int count;
 	private String department;
 	private String number;
 	private ArrayList<Student> students = new ArrayList<Student>();
@@ -20,16 +20,28 @@ public class CourseSession {
 	public CourseSession(String department, String number) {
 		this.department = department;
 		this.number = number;
-		CourseSession.count = CourseSession.count + 1;
+		CourseSession.incrementCount();
 	}
 
 	public CourseSession(String department, String number, Date startDate) {
 		this.department = department;
 		this.number = number;
 		this.startDate = startDate;
-		CourseSession.count = CourseSession.count + 1;
+		CourseSession.incrementCount();
+	}
+	
+	public static void resetCount() {
+		count = 0;
+	}
+	
+	private static void incrementCount() {
+		count = count + 1;
 	}
 
+	public static int getCount() {
+		return count;
+	}
+	
 	public String getDepartment() {
 		return department;
 	}
@@ -80,5 +92,5 @@ public class CourseSession {
 	public ArrayList<Student> getAllStudents() {
 		return students;
 	}
-	
+
 }
