@@ -1,10 +1,10 @@
 package kr.sideeffect.agilejava.ch03;
 
+import static kr.sideeffect.agilejava.ch04.ReportConstant.NEWLINE;
 import kr.sideeffect.agilejava.ch01.Student;
 import kr.sideeffect.agilejava.ch02.CourseSession;
 
 public class RosterReporter {
-	static final String NEWLINE = System.getProperty("line.separator");
 	static final String ROSTER_REPORT_HEADER = "Student" + NEWLINE + "-" + NEWLINE;
 	static final String ROSTER_REPORT_FOOTER = NEWLINE + "# students = ";
 	

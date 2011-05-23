@@ -1,6 +1,7 @@
 package kr.sideeffect.agilejava.ch03;
 
 import static org.junit.Assert.assertEquals;
+import static kr.sideeffect.agilejava.ch04.ReportConstant.NEWLINE;
 import kr.sideeffect.agilejava.ch01.Student;
 import kr.sideeffect.agilejava.ch02.CourseSession;
 
@@ -15,7 +16,7 @@ public class RosterReporterTest {
 		session.enroll(new Student("B"));
 		
 		String rosterReport = new RosterReporter(session).getReport();
-System.out.println(rosterReport);
-		assertEquals(RosterReporter.ROSTER_REPORT_HEADER + "A" + RosterReporter.NEWLINE + "B" + RosterReporter.NEWLINE + RosterReporter.ROSTER_REPORT_FOOTER + "2" + RosterReporter.NEWLINE, rosterReport);
+//System.out.println(rosterReport);
+		assertEquals(RosterReporter.ROSTER_REPORT_HEADER + "A" + NEWLINE + "B" + NEWLINE + RosterReporter.ROSTER_REPORT_FOOTER + "2" + NEWLINE, rosterReport);
 	}
 }
