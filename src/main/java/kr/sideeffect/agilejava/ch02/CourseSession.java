@@ -7,7 +7,7 @@ import java.util.GregorianCalendar;
 
 import kr.sideeffect.agilejava.ch01.Student;
 
-public class CourseSession {
+public class CourseSession implements Comparable<CourseSession>{
 	static final String NEWLINE = System.getProperty("line.separator");
 	static final String ROSTER_REPORT_HEADER = "Student" + NEWLINE + "-" + NEWLINE;
 	static final String ROSTER_REPORT_FOOTER = NEWLINE + "# students = ";
@@ -95,6 +95,10 @@ public class CourseSession {
 
 	public void setNumberOfCredits(int numberOfCredits) {
 		this.numberOfCredits = numberOfCredits;
+	}
+
+	public int compareTo(CourseSession that) {
+		return this.getDepartment().compareTo(that.getDepartment());
 	}
 
 }

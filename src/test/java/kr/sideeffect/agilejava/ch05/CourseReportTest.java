@@ -2,6 +2,7 @@ package kr.sideeffect.agilejava.ch05;
 
 import static kr.sideeffect.agilejava.ch04.ReportConstant.NEWLINE;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,7 +21,7 @@ public class CourseReportTest {
 		report.add(CourseSession.create("CZEC", "200", date));
 		report.add(CourseSession.create("ITAL", "410", date));
 		
-		assertEquals("ENGL 101" + NEWLINE + "CZEC 200" + NEWLINE + "ITAL 410" + NEWLINE, report.text());
+		assertEquals("CZEC 200" + NEWLINE + "ENGL 101" + NEWLINE + "ITAL 410" + NEWLINE, report.text());
 	}
 	
 	@Test
@@ -55,5 +56,25 @@ public class CourseReportTest {
 		assertEquals("Kafka", list.get(1));
 		assertEquals("Camus", list.get(2));
 		assertEquals("Boyle", list.get(3));
+	}
+	
+	@Test
+	public void testStringCompareTo() {
+		assertTrue("A".compareTo("B") < 0);
+		assertEquals(0, "A".compareTo("A"));
+		assertTrue("B".compareTo("A") > 0);
+	}
+	
+	@Test
+	public void testComparable() {
+		final Date date = new Date();
+		CourseSession sessionA = CourseSession.create("CMSC", "101", date);
+		CourseSession sessionB = CourseSession.create("ENGL", "101", date);
+		assertTrue(sessionA.compareTo(sessionB) < 0);
+		assertTrue(sessionB.compareTo(sessionA) > 0);
+		
+		CourseSession sessionC = CourseSession.create("CMSC", "101", date);
+		assertEquals(0, sessionA.compareTo(sessionC));
+		
 	}
 }
