@@ -15,7 +15,7 @@ public class Student {
 	private int credits;
 	private String state = "";
 	private ArrayList<Grade> grades = new ArrayList<Grade>();
-	private boolean isHonors = false;
+	private GradingStrategy gradingStrategy = new RegularGradingStrategy();;
 
 	public Student(String name) {
 		this.name = name;
@@ -56,43 +56,25 @@ public class Student {
 		}
 		double total = 0.0;
 		for (Grade grade : grades) {
-			total += gradePointsFor(grade);
+			total += gradingStrategy.getGradePointsFor(grade);
 		}
 		return total / grades.size();
 	}
 
-	private int gradePointsFor(Grade grade) {
-		int points = basicGradePointsFor(grade);
-		if (isHonors) {
-			if (points > 0) {
-				points += 1;
-			}
-		}
-		return points;
-	}
-	
-	private int basicGradePointsFor(Grade grade) {
-		if (grade == Grade.A)  return 4;
-		if (grade == Grade.B) return 3;
-		if (grade == Grade.C) return 2;
-		if (grade == Grade.D) return 1;
-		return 0;
-	}
-	
 	public Student createHonorsStudent(Student.Grade grade) {
 		Student student = new Student("a");
-		student.setHonors();
+		student.setGradingStrategy(new HonorsGradingStrategy());
 		student.addGrade(grade);
 		return student;
 	}
 	
 	public Student createHonorsStudent() {
 		Student student = new Student("a");
-		student.setHonors();
+		student.setGradingStrategy(new HonorsGradingStrategy());
 		return student;
 	}
 
-	private void setHonors() {
-		isHonors = true; 
+	private void setGradingStrategy(HonorsGradingStrategy gradingStrategy) {
+		this.gradingStrategy  = gradingStrategy;
 	}
 }
