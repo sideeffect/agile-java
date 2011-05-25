@@ -2,8 +2,12 @@ package kr.sideeffect.agilejava.ch01;
 
 import java.util.ArrayList;
 
+import kr.sideeffect.agilejava.ch05.GradingStrategy;
+import kr.sideeffect.agilejava.ch05.HonorsGradingStrategy;
+import kr.sideeffect.agilejava.ch05.RegularGradingStrategy;
+
 public class Student {
-	enum Grade { A, B, C, D, F };
+	public enum Grade { A, B, C, D, F };
 	
 	static final int CREDITS_REQUIRED_FOR_FULL_TIME = 12;
 	public static final String IN_STATE = "CO";
@@ -11,6 +15,7 @@ public class Student {
 	private int credits;
 	private String state = "";
 	private ArrayList<Grade> grades = new ArrayList<Grade>();
+	private boolean isHonors = false;
 
 	public Student(String name) {
 		this.name = name;
@@ -57,10 +62,37 @@ public class Student {
 	}
 
 	private int gradePointsFor(Grade grade) {
+		int points = basicGradePointsFor(grade);
+		if (isHonors) {
+			if (points > 0) {
+				points += 1;
+			}
+		}
+		return points;
+	}
+	
+	private int basicGradePointsFor(Grade grade) {
 		if (grade == Grade.A)  return 4;
 		if (grade == Grade.B) return 3;
 		if (grade == Grade.C) return 2;
 		if (grade == Grade.D) return 1;
 		return 0;
+	}
+	
+	public Student createHonorsStudent(Student.Grade grade) {
+		Student student = new Student("a");
+		student.setHonors();
+		student.addGrade(grade);
+		return student;
+	}
+	
+	public Student createHonorsStudent() {
+		Student student = new Student("a");
+		student.setHonors();
+		return student;
+	}
+
+	private void setHonors() {
+		isHonors = true; 
 	}
 }

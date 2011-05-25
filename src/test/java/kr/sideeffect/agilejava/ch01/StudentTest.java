@@ -68,4 +68,15 @@ public class StudentTest {
 	private void assertGpa(Student student, double expectedGpa) {
 		assertEquals(expectedGpa, student.getGpa(), GRADE_TOLERANCE);
 	}
+	
+	@Test
+	public void testCalculateHonorsStudentGpa() {
+		Student student = new Student("a");
+		assertGpa(student.createHonorsStudent(), 0.0);
+		assertGpa(student.createHonorsStudent(Student.Grade.A), 5.0);
+		assertGpa(student.createHonorsStudent(Student.Grade.B), 4.0);
+		assertGpa(student.createHonorsStudent(Student.Grade.C), 3.0);
+		assertGpa(student.createHonorsStudent(Student.Grade.D), 2.0);
+		assertGpa(student.createHonorsStudent(Student.Grade.F), 0.0);
+	}
 }
