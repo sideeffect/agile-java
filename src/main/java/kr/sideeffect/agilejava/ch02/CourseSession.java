@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import kr.sideeffect.agilejava.ch01.Student;
 
@@ -14,7 +15,7 @@ public class CourseSession implements Comparable<CourseSession>{
 	private static int count;
 	private String department;
 	private String number;
-	private ArrayList<Student> students = new ArrayList<Student>();
+	private List<Student> students = new ArrayList<Student>();
 	private Date startDate;
 	private int numberOfCredits;
 	
@@ -89,7 +90,7 @@ public class CourseSession implements Comparable<CourseSession>{
 		return buffer.toString();
 	}
 
-	public ArrayList<Student> getAllStudents() {
+	public List<Student> getAllStudents() {
 		return students;
 	}
 

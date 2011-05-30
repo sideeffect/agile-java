@@ -74,7 +74,7 @@ public class Student {
 		return student;
 	}
 
-	private void setGradingStrategy(HonorsGradingStrategy gradingStrategy) {
+	private void setGradingStrategy(GradingStrategy gradingStrategy) {
 		this.gradingStrategy  = gradingStrategy;
 	}
 }
