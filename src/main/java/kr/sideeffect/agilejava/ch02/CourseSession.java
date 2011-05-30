@@ -19,7 +19,7 @@ public class CourseSession implements Comparable<CourseSession>{
 	private Date startDate;
 	private int numberOfCredits;
 	
-	private CourseSession(String department, String number, Date startDate) {
+	protected CourseSession(String department, String number, Date startDate) {
 		this.department = department;
 		this.number = number;
 		this.startDate = startDate;
@@ -65,7 +65,7 @@ public class CourseSession implements Comparable<CourseSession>{
 
 	public Date getEndDate() {
 		GregorianCalendar calendar = new GregorianCalendar();
-		calendar.setTime(startDate);
+		calendar.setTime(getStartDate());
 		int numberOfDays = 16 * 7 - 3;
 		calendar.add(Calendar.DAY_OF_YEAR, numberOfDays);
 		return calendar.getTime();

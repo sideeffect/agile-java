@@ -10,6 +10,7 @@ import kr.sideeffect.agilejava.ch05.BasicGradingStrategyTest;
 import kr.sideeffect.agilejava.ch05.CourseReportTest;
 import kr.sideeffect.agilejava.ch05.HonorsGradingStrategyTest;
 import kr.sideeffect.agilejava.ch06.ReportCardTest;
+import kr.sideeffect.agilejava.ch06.SummerCourseSessionTest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -23,7 +24,8 @@ import org.junit.runners.Suite;
 	CourseReportTest.class,
 	ReportCardTest.class,
 	BasicGradingStrategyTest.class,
-	HonorsGradingStrategyTest.class
+	HonorsGradingStrategyTest.class,
+	SummerCourseSessionTest.class
 })
 public class AllTests {
 
