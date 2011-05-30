@@ -2,9 +2,7 @@ package kr.sideeffect.agilejava.ch06;
 
 import java.util.Date;
 
-import kr.sideeffect.agilejava.ch02.CourseSession;
-
-public class SummerCourseSession extends CourseSession {
+public class SummerCourseSession extends Session {
 	private SummerCourseSession(String department, String number, Date startDate) {
 		super(department, number, startDate);
 	}

@@ -1,77 +1,36 @@
 package kr.sideeffect.agilejava.ch02;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.Date;
 
-import kr.sideeffect.agilejava.ch01.Student;
 import kr.sideeffect.agilejava.ch03.DateUtil;
+import kr.sideeffect.agilejava.ch06.Session;
+import kr.sideeffect.agilejava.ch06.SessionTest;
 
-import org.junit.Before;
 import org.junit.Test;
 
-public class CourseSessionTest {
-	private CourseSession session;
-	private Date startDate;
-	private static final int CREDITS = 3;
-	
-	@Before
-	public void setUp() {
-		startDate = DateUtil.createDate(2003, 1, 6);
-		session = createCourseSession();
-	}
-	
-	@Test
-	public void testCreate() {
-		assertEquals("ENGL", session.getDepartment());
-		assertEquals("101", session.getNumber());
-		assertEquals(0, session.getNumberOfStudents());
-		assertEquals(startDate, session.getStartDate());
-	}
-	
-	@Test
-	public void testEnrollStudents() {
-		Student student1 = new Student("Cain DiVoe");
-		session.enroll(student1);
-		assertEquals(CREDITS, student1.getCredits());
-		assertEquals(1, session.getNumberOfStudents());
-		assertEquals(student1, session.get(0));
-		
-		Student student2 = new Student("Coralee DeVaughn");
-		session.enroll(student2);
-		assertEquals(CREDITS, student2.getCredits());
-		assertEquals(2, session.getNumberOfStudents());
-		assertEquals(student1, session.get(0));
-		assertEquals(student2, session.get(1));
-	}
+public class CourseSessionTest extends SessionTest {
 	
 	@Test
 	public void testCourseDates() {
+		Date startDate = DateUtil.createDate(2003, 1, 6);
+		Session session = createSession("ENGL", "200", startDate);
 		Date sixteenWeeksOut = DateUtil.createDate(2003, 4, 25);
 		assertEquals(sixteenWeeksOut, session.getEndDate());
 	}
 	
 	@Test
-	public void testRosterReport() {
-		session.enroll(new Student("A"));
-		session.enroll(new Student("B"));
-		
-		String rosterReport = session.getRosterReport();
-		assertEquals(CourseSession.ROSTER_REPORT_HEADER + "A" + CourseSession.NEWLINE + "B" + CourseSession.NEWLINE + CourseSession.ROSTER_REPORT_FOOTER + "2" + CourseSession.NEWLINE, rosterReport);
-	}
-	
-	@Test
 	public void testCount() {
 		CourseSession.resetCount();
-		createCourseSession();
+		createSession("", "", new Date());
 		assertEquals(1, CourseSession.getCount());
-		createCourseSession();
+		createSession("", "", new Date());
 		assertEquals(2, CourseSession.getCount());		
 	}
 
-	private CourseSession createCourseSession() {
-		CourseSession session = CourseSession.create("ENGL", "101", startDate);
-		session.setNumberOfCredits(CourseSessionTest.CREDITS);
-		return session;
+	@Override
+	protected Session createSession(String department, String number, Date startDate) {
+		return CourseSession.create(department, number, startDate);
 	}
 }
