@@ -6,7 +6,10 @@ import kr.sideeffect.agilejava.ch01.StudentTest;
 import kr.sideeffect.agilejava.ch02.CourseSessionTest;
 import kr.sideeffect.agilejava.ch03.DateUtilTest;
 import kr.sideeffect.agilejava.ch03.RosterReporterTest;
+import kr.sideeffect.agilejava.ch05.BasicGradingStrategyTest;
 import kr.sideeffect.agilejava.ch05.CourseReportTest;
+import kr.sideeffect.agilejava.ch05.HonorsGradingStrategyTest;
+import kr.sideeffect.agilejava.ch06.ReportCardTest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -17,7 +20,10 @@ import org.junit.runners.Suite;
 	CourseSessionTest.class, 
 	RosterReporterTest.class, 
 	DateUtilTest.class,
-	CourseReportTest.class
+	CourseReportTest.class,
+	ReportCardTest.class,
+	BasicGradingStrategyTest.class,
+	HonorsGradingStrategyTest.class
 })
 public class AllTests {
 

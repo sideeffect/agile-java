@@ -2,9 +2,9 @@ package kr.sideeffect.agilejava.ch01;
 
 import java.util.ArrayList;
 
+import kr.sideeffect.agilejava.ch05.BasicGradingStrategy;
 import kr.sideeffect.agilejava.ch05.GradingStrategy;
 import kr.sideeffect.agilejava.ch05.HonorsGradingStrategy;
-import kr.sideeffect.agilejava.ch05.RegularGradingStrategy;
 
 public class Student {
 	public enum Grade { A, B, C, D, F };
@@ -15,7 +15,7 @@ public class Student {
 	private int credits;
 	private String state = "";
 	private ArrayList<Grade> grades = new ArrayList<Grade>();
-	private GradingStrategy gradingStrategy = new RegularGradingStrategy();;
+	private GradingStrategy gradingStrategy = new BasicGradingStrategy();
 
 	public Student(String name) {
 		this.name = name;
