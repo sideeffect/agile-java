@@ -5,7 +5,7 @@ import kr.sideeffect.agilejava.ch01.Student.Grade;
 public class HonorsGradingStrategy extends BasicGradingStrategy {
 
 	public int getGradePointsFor(Grade grade) {
-		int points = basicGradePointsFor(grade);
+		int points = super.getGradePointsFor(grade);
 		if (points > 0) {
 			points += 1;
 		}

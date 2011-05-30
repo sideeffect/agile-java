@@ -3,7 +3,9 @@ package kr.sideeffect.agilejava.ch05;
 import kr.sideeffect.agilejava.ch01.Student.Grade;
 
 abstract public class BasicGradingStrategy implements GradingStrategy {
-	abstract public int getGradePointsFor(Grade grade);
+	public int getGradePointsFor(Grade grade) {
+		return basicGradePointsFor(grade);
+	}
 	
 	protected int basicGradePointsFor(Grade grade) {
 		switch (grade) {
