@@ -1,6 +1,7 @@
 package kr.sideeffect.agilejava.ch01;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import kr.sideeffect.agilejava.ch05.BasicGradingStrategy;
 import kr.sideeffect.agilejava.ch05.GradingStrategy;
@@ -32,10 +33,51 @@ public class Student {
 	private String state = "";
 	private ArrayList<Grade> grades = new ArrayList<Grade>();
 	private GradingStrategy gradingStrategy = new BasicGradingStrategy();
+	private String firstName = "";
+	private String middleName = "";
+	private String lastName;
 
-	public Student(String name) {
-		this.name = name;
+	public Student(String fullName) {
+		this.name = fullName;
 		credits = 0;
+		List<String> nameParts = split(fullName);
+		setName(nameParts);
+	}
+
+	private List<String> split(String string) {
+		List<String> results = new ArrayList<String>();
+		
+		StringBuffer word = new StringBuffer();
+		int index = 0;
+		while (index < string.length()) {
+			char ch = string.charAt(index);
+			if (ch != ' ') {
+				word.append(ch);
+			} else {
+				if (word.length() > 0 ) {
+					results.add(word.toString());
+					word = new StringBuffer();
+				}
+			}
+			index++;
+		}
+		if (word.length() > 0) {
+			results.add(word.toString());
+		}
+		return results;
+	}
+
+	private void setName(List<String> nameParts) {
+		if (nameParts.size() == 1) {
+			this.lastName = nameParts.get(0);
+		} else if (nameParts.size() == 2) {
+			this.firstName = nameParts.get(0);
+			this.lastName = nameParts.get(1);
+		} else if (nameParts.size() == 3) {
+			this.firstName = nameParts.get(0);
+			this.middleName = nameParts.get(1);
+			this.lastName = nameParts.get(2);
+		}
 	}
 
 	public String getName() {
@@ -92,5 +134,17 @@ public class Student {
 
 	private void setGradingStrategy(GradingStrategy gradingStrategy) {
 		this.gradingStrategy  = gradingStrategy;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getMiddleName() {
+		return middleName;
+	}
+
+	public String getLastName() {
+		return lastName;
 	}
 }
