@@ -46,10 +46,9 @@ public class Student {
 
 	private List<String> split(String string) {
 		List<String> results = new ArrayList<String>();
-		
+
 		StringBuffer word = new StringBuffer();
-		int index = 0;
-		while (index < string.length()) {
+		for (int index = 0; index < name.length(); index++) {
 			char ch = string.charAt(index);
 			if (ch != ' ') {
 				word.append(ch);
@@ -59,7 +58,6 @@ public class Student {
 					word = new StringBuffer();
 				}
 			}
-			index++;
 		}
 		if (word.length() > 0) {
 			results.add(word.toString());
@@ -68,16 +66,21 @@ public class Student {
 	}
 
 	private void setName(List<String> nameParts) {
-		if (nameParts.size() == 1) {
-			this.lastName = nameParts.get(0);
-		} else if (nameParts.size() == 2) {
-			this.firstName = nameParts.get(0);
-			this.lastName = nameParts.get(1);
-		} else if (nameParts.size() == 3) {
-			this.firstName = nameParts.get(0);
-			this.middleName = nameParts.get(1);
-			this.lastName = nameParts.get(2);
+		this.lastName = removeLast(nameParts);
+		String name = removeLast(nameParts);
+		if (nameParts.isEmpty()) {
+			this.firstName = name;
+		} else {
+			this.middleName = name;
+			this.firstName = removeLast(nameParts);
 		}
+	}
+
+	private String removeLast(List<String> list) {
+		if (list.isEmpty()) {
+			return "";
+		}
+		return list.remove(list.size() -1);
 	}
 
 	public String getName() {
