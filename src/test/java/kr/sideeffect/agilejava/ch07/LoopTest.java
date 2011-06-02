@@ -61,4 +61,53 @@ public class LoopTest {
 		} while(++index < x);
 		return fib;
 	}
+	
+	@Test
+	public void testCommas() {
+		String sequence = "1,2,3,4,5";
+		assertEquals(sequence, sequenceUsingDo(1, 5));
+		assertEquals(sequence, sequenceUsingFor(1, 5));
+		assertEquals(sequence, sequenceUsingWhile(1, 5));
+		
+		sequence = "8";
+		assertEquals(sequence, sequenceUsingDo(8, 8));
+		assertEquals(sequence, sequenceUsingFor(8, 8));
+		assertEquals(sequence, sequenceUsingWhile(8, 8));
+	}
+
+	private String sequenceUsingDo(int start, int stop) {
+		StringBuilder builder = new StringBuilder();
+		int i = start;
+		do {
+			if (i > start) {
+				builder.append(',');
+			}
+			builder.append(i);
+		} while(++i <= stop);
+		return builder.toString();
+	}
+	
+	private String sequenceUsingFor(int start, int stop) {
+		StringBuilder builder = new StringBuilder();
+		for (int i = start; i <= stop; i++) {
+			if (i > start) {
+				builder.append(',');
+			}
+			builder.append(i);
+		}
+		return builder.toString();
+	}
+	
+	private String sequenceUsingWhile(int start, int stop) {
+		StringBuilder builder = new StringBuilder();
+		int i = start;
+		while (i <= stop) {
+			if (i > start) {
+				builder.append(',');
+			}
+			builder.append(i);
+			i++;
+		}
+		return builder.toString();
+	}
 }
