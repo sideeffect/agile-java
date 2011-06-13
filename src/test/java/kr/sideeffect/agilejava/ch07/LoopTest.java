@@ -24,7 +24,11 @@ public class LoopTest {
 	}
 
 	public static boolean isPalindrome(String string) {
-		for (int forward = 0, backward = string.length() -1; forward < string.length(); forward++, backward--) {
+		if (string.length() == 0) {
+			return true;
+		}
+		int limit = string.length() / 2;
+		for (int forward = 0, backward = string.length() -1; forward < limit; forward++, backward--) {
 			if (string.charAt(forward) != string.charAt(backward)) {
 				return false;
 			}
@@ -50,16 +54,7 @@ public class LoopTest {
 	private int fib(int x) {
 		if (x == 0) return 0;
 		if (x == 1) return 1;
-		int fib = 0;
-		int nextFib = 1;
-		int index = 0;
-		int temp;
-		do {
-			temp = fib + nextFib;
-			fib = nextFib;
-			nextFib = temp;
-		} while(++index < x);
-		return fib;
+		return fib(x-1) + fib(x-2);
 	}
 	
 	@Test
