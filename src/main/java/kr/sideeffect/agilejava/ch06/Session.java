@@ -1,5 +1,7 @@
 package kr.sideeffect.agilejava.ch06;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -18,6 +20,7 @@ abstract public class Session implements Comparable<Session> {
 	private List<Student> students = new ArrayList<Student>();
 	private Date startDate;
 	private int numberOfCredits;
+	private URL url;
 	
 	protected Session(String department, String number, Date startDate) {
 		this.department = department;
@@ -90,4 +93,12 @@ abstract public class Session implements Comparable<Session> {
 	}
 	
 	abstract protected int getSessionLength();
+
+	public void setUrl(String urlString) throws MalformedURLException {
+		this.url = new URL(urlString);
+	}
+
+	public URL getUrl() {
+		return url;
+	}
 }

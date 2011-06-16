@@ -16,4 +16,11 @@ public class ScorerTest {
 		Scorer scorer = new Scorer();
 		scorer.score("abd");
 	}
+	
+	@Test
+	public void testIsValid() throws Exception {
+		Scorer scorer = new Scorer();
+		assertTrue(scorer.isValid("75"));
+		assertFalse(scorer.isValid("bd"));
+	}
 }

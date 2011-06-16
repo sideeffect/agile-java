@@ -2,6 +2,7 @@ package kr.sideeffect.agilejava.ch06;
 
 import static org.junit.Assert.*;
 
+import java.net.MalformedURLException;
 import java.util.Date;
 
 import kr.sideeffect.agilejava.ch01.Student;
@@ -60,5 +61,18 @@ public abstract class SessionTest {
 		Session sessionD = createSession("CMSC", "210", date);
 		assertTrue(sessionC.compareTo(sessionD) < 0);
 		assertTrue(sessionD.compareTo(sessionC) > 0);
+	}
+	
+	@Test
+	public void testSessionUrl() throws MalformedURLException {
+		final String url = "http://course.langrsoft.com/cmsc300";
+		session.setUrl(url);
+		assertEquals(url, session.getUrl().toString());
+	}
+	
+	@Test(expected=MalformedURLException.class)
+	public void testInvalidSessionUrl() throws Exception {
+		final String url = "httsp://course.langrsoft.com/cmsc300";
+		session.setUrl(url);
 	}
 }
