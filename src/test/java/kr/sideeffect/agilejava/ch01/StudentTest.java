@@ -101,8 +101,9 @@ public class StudentTest {
 	
 	@Test
 	public void testBadlyFormattedName() {
+		final String studentName = "a b c d";
 		expectedExcetption.expect(StudentNameFormatException.class);
-		expectedExcetption.expectMessage("Student name 'a b c d' contains more than 3 parts");
-		new Student("a b c d");
+		expectedExcetption.expectMessage(String.format(Student.TOO_MANY_NAME_PARTS_MSG, studentName, Student.MAX_NAME_PARTS));
+		new Student(studentName);
 	}
 }
