@@ -3,6 +3,7 @@ package kr.sideeffect.agilejava.ch01;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import kr.sideeffect.agilejava.ch08.StudentNameFormatException;
 
 import org.junit.Test;
 
@@ -91,5 +92,10 @@ public class StudentTest {
 		assertGpa(student.createHonorsStudent(Student.Grade.C), 3.0);
 		assertGpa(student.createHonorsStudent(Student.Grade.D), 2.0);
 		assertGpa(student.createHonorsStudent(Student.Grade.F), 0.0);
+	}
+	
+	@Test(expected=StudentNameFormatException.class)
+	public void testBadlyFormattedName() {
+		new Student("a b c d");
 	}
 }

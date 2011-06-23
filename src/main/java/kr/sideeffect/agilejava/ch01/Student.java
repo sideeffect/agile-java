@@ -6,6 +6,7 @@ import java.util.List;
 import kr.sideeffect.agilejava.ch05.BasicGradingStrategy;
 import kr.sideeffect.agilejava.ch05.GradingStrategy;
 import kr.sideeffect.agilejava.ch05.HonorsGradingStrategy;
+import kr.sideeffect.agilejava.ch08.StudentNameFormatException;
 
 public class Student {
 	public enum Grade { 
@@ -41,6 +42,10 @@ public class Student {
 		this.name = fullName;
 		credits = 0;
 		List<String> nameParts = split(fullName);
+		final int maximumNumberOfNameParts = 3;
+		if (nameParts.size() > maximumNumberOfNameParts) {
+			throw new StudentNameFormatException();
+		}
 		setName(nameParts);
 	}
 
