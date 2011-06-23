@@ -5,7 +5,9 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import kr.sideeffect.agilejava.ch08.StudentNameFormatException;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class StudentTest {
 	private static final double GRADE_TOLERANCE = 0.05;
@@ -94,8 +96,13 @@ public class StudentTest {
 		assertGpa(student.createHonorsStudent(Student.Grade.F), 0.0);
 	}
 	
-	@Test(expected=StudentNameFormatException.class)
+	@Rule
+	public ExpectedException expectedExcetption = ExpectedException.none();
+	
+	@Test
 	public void testBadlyFormattedName() {
+		expectedExcetption.expect(StudentNameFormatException.class);
+		expectedExcetption.expectMessage("Student name 'a b c d' contains more than 3 parts");
 		new Student("a b c d");
 	}
 }
