@@ -105,5 +105,11 @@ public class StudentTest {
 		expectedExcetption.expect(StudentNameFormatException.class);
 		expectedExcetption.expectMessage(String.format(Student.TOO_MANY_NAME_PARTS_MSG, studentName, Student.MAX_NAME_PARTS));
 		new Student(studentName);
+		assertTrue(wasLogged(String.format(Student.TOO_MANY_NAME_PARTS_MSG, studentName, Student.MAX_NAME_PARTS)));
+	}
+
+	private boolean wasLogged(String message) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

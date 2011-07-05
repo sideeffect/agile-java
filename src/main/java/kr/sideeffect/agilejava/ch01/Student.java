@@ -2,6 +2,7 @@ package kr.sideeffect.agilejava.ch01;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import kr.sideeffect.agilejava.ch05.BasicGradingStrategy;
 import kr.sideeffect.agilejava.ch05.GradingStrategy;
@@ -46,9 +47,15 @@ public class Student {
 		List<String> nameParts = split(fullName);
 		if (nameParts.size() > MAX_NAME_PARTS) {
 			String message = String.format(TOO_MANY_NAME_PARTS_MSG, fullName, MAX_NAME_PARTS); 
+			log(message);
 			throw new StudentNameFormatException(message);
 		}
 		setName(nameParts);
+	}
+
+	private void log(String message) {
+		Logger logger = Logger.getLogger(getClass().getName());
+		logger.info(message);
 	}
 
 	private List<String> split(String string) {
