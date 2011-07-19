@@ -3,7 +3,12 @@ package kr.sideeffect.agilejava.ch01;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
+import java.util.logging.Handler;
+import java.util.logging.Logger;
+
 import kr.sideeffect.agilejava.ch08.StudentNameFormatException;
+import kr.sideeffect.agilejava.ch08.TestHandler;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -101,15 +106,15 @@ public class StudentTest {
 	
 	@Test
 	public void testBadlyFormattedName() {
+		Handler handler = new TestHandler();
+		Student.logger.addHandler(handler);
 		final String studentName = "a b c d";
+		String message = String.format(Student.TOO_MANY_NAME_PARTS_MSG, studentName, Student.MAX_NAME_PARTS);
+		
 		expectedExcetption.expect(StudentNameFormatException.class);
-		expectedExcetption.expectMessage(String.format(Student.TOO_MANY_NAME_PARTS_MSG, studentName, Student.MAX_NAME_PARTS));
+		expectedExcetption.expectMessage(message);
 		new Student(studentName);
-		assertTrue(wasLogged(String.format(Student.TOO_MANY_NAME_PARTS_MSG, studentName, Student.MAX_NAME_PARTS)));
-	}
-
-	private boolean wasLogged(String message) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		assertEquals(message, ((TestHandler)handler).getMessage());
 	}
 }
