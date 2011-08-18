@@ -19,7 +19,7 @@ public class SummerCourseSessionTest extends SessionTest {
 	}
 
 	@Override
-	protected Session createSession(Course course, Date startDate) {
-		return SummerCourseSession.create(course.getDepartment(), course.getNumber(), startDate);
+	protected Session createSession(Course course, Date date) {
+		return SummerCourseSession.create(course, date);
 	}
 }

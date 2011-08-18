@@ -9,31 +9,30 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import kr.sideeffect.agilejava.ch01.Student;
+import kr.sideeffect.agilejava.ch09.Course;
 
 abstract public class Session implements Comparable<Session> {
 	static final String NEWLINE = System.getProperty("line.separator");
 	static final String ROSTER_REPORT_HEADER = "Student" + NEWLINE + "-" + NEWLINE;
 	static final String ROSTER_REPORT_FOOTER = NEWLINE + "# students = ";
 	private static int count;
-	private String department;
-	private String number;
+	private Course course;
 	private List<Student> students = new ArrayList<Student>();
 	private Date startDate;
 	private int numberOfCredits;
 	private URL url;
 	
-	protected Session(String department, String number, Date startDate) {
-		this.department = department;
-		this.number = number;
+	protected Session(Course course, Date startDate) {
+		this.course = course;
 		this.startDate = startDate;
 	}
 	
 	public String getDepartment() {
-		return department;
+		return course.getDepartment();
 	}
 
 	public String getNumber() {
-		return number;
+		return course.getNumber();
 	}
 
 	public int getNumberOfStudents() {

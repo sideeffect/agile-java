@@ -3,12 +3,13 @@ package kr.sideeffect.agilejava.ch02;
 import java.util.Date;
 
 import kr.sideeffect.agilejava.ch06.Session;
+import kr.sideeffect.agilejava.ch09.Course;
 
 public class CourseSession extends Session {
 	private static int count;
 	
-	protected CourseSession(String department, String number, Date startDate) {
-		super(department, number, startDate);
+	protected CourseSession(Course course, Date startDate) {
+		super(course, startDate);
 		CourseSession.incrementCount();
 	}
 	
@@ -24,8 +25,8 @@ public class CourseSession extends Session {
 		return count;
 	}
 	
-	public static CourseSession create(String department, String number, Date startDate) {
-		return new CourseSession(department, number, startDate);
+	public static Session create(Course course, Date startDate) {
+		return new CourseSession(course, startDate);
 	}
 	
 	@Override

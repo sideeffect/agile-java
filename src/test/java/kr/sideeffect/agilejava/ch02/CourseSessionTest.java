@@ -31,8 +31,8 @@ public class CourseSessionTest extends SessionTest {
 	}
 
 	@Override
-	protected Session createSession(Course course, Date startDate) {
-		return CourseSession.create(course.getDepartment(), course.getNumber(), startDate);
+	protected Session createSession(Course course, Date date) {
+		return CourseSession.create(course, date);
 	}
 	
 	private Course createCourse() {
