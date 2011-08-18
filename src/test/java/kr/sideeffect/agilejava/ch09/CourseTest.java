@@ -5,9 +5,6 @@ import static org.junit.Assert.assertFalse;
 
 import java.io.IOException;
 
-import kr.sideeffect.agilejava.ch01.Student;
-
-import org.junit.Before;
 import org.junit.Test;
 
 public class CourseTest {
@@ -28,5 +25,22 @@ public class CourseTest {
 		
 		Course courseB = new Course("ARTH", "330");
 		assertFalse(courseA.equals(courseB));
+		
+		// reflexivity
+		assertEquals(courseA, courseA);
+		
+		// transitivity
+		Course courseAPrime2 = new Course("NURS", "201");
+		assertEquals(courseAPrime, courseAPrime2);
+		assertEquals(courseA, courseAPrime2);
+		
+		// symmetry
+		assertEquals(courseAPrime, courseA);
+		
+		// consistency
+		assertEquals(courseA, courseAPrime);
+		
+		// comparison to null
+		assertFalse(courseA.equals(null));
 	}
 }
